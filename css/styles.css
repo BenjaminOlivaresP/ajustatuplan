@@ -240,6 +240,7 @@ body.legal-page {
   gap: 150px;
   margin-top: 30px;
   padding: 0 5%;
+  
 
   background: 
   linear-gradient(180deg,
@@ -321,159 +322,13 @@ body.legal-page {
 }
 
 .left-column {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    margin-top: -30px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 30px;
+    width: 100%;
+    margin-top: 0;
 }
-/* =====================================================
-   6. DASHBOARD
-===================================================== */
-
-.dashboard {
-    flex: 1;
-  position: relative;
-  min-width: 0;
-  max-width: 800px;
-  z-index: 4;
-
-  margin-bottom: 15px;
-}
-
-.dashboard-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 35px 35px 35px;
-}
-
-.dashboard-title {
-  font-size: 1.3rem;
-  margin-bottom: 25px;
-  color: #1e3a8a;
-}
-
-.stats-grid {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 40px;
-  width: 100%;
-}
-
-.stat-box {
-  flex: 1;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-  text-align: center;
-}
-
-.stat-number {
-  display: block;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #1e3a8a;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: #555;
-}
-
-/* Charts */
-
-.dashboard-multiple {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  padding-top: 0px;
-}
-
-.chart-wrapper {
-  flex: 1 1 45%;
-  min-width: 280px;
-}
-
-.chart-wrapper h4 {
-  font-size: 1.05rem;
-  margin-bottom: 8px;
-  color: #1e3a8a;
-  font-weight: 600;
-}
-
-.chart-container {
-  position: relative;
-  height: 250px;
-  width: 100%;
-  max-width: 500px;
-  background: white;
-  padding: 20px;
-  padding-left: 40px;
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-
-/* Mini Cards */
-
-.mini-cards {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.mini-card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: white;
-  padding: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-  text-align: center;
-}
-
-.mini-card h4 {
-  font-size: 0.95rem;
-  margin-bottom: 8px;
-  color: #1e3a8a;
-  font-weight: 600;
-}
-
-.mini-card p {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #0d47a1;
-}
-
-.chart-plus-card {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-  width: 100%;
-}
-
-.chart-plus-card .chart-container {
-  flex: 1;
-  min-width: 0;
-}
-
-.mini-cards-column {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  flex: 0 0 200px;
-}
-
 
 /* =====================================================
    7. CONVERSION SECTION
@@ -862,7 +717,7 @@ body.legal-page {
 
 
 /* =====================================================
-   12. RESPONSIVE OPTIMIZADO PARA MÓVILES
+   12. RESPONSIVE OPTIMIZADO
 ===================================================== */
 
 /* Tablets y pantallas medianas */
@@ -887,7 +742,7 @@ body.legal-page {
   }
 }
 
-/* Celulares grandes y medianos (Smartphones) */
+/* Celulares grandes / Phablets */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -909,59 +764,54 @@ body.legal-page {
     margin-bottom: 15px;
   }
 
-  /* Anulación de posicionamientos manuales/flotantes para el Dashboard e Info Cards */
-  .dashboard, 
-  .dashboard-container,
-  #dashboard,
-  .info-card, 
-  .data-warning {
-    position: relative !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-    margin: 20px auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .stats-grid,
-  .chart-plus-card {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .mini-cards-column {
-    flex-direction: column !important;
-    width: 100%;
-    gap: 15px;
-  }
+  .info-card,
+.data-warning {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px auto 0 auto;
+}
 
   .conversion-strip {
-    padding: 50px 20px;
-    text-align: center;
-  }
+  padding: 50px 0 0;
+  text-align: center;
+}
+
+.strip-container {
+  padding: 0 20px;
+}
+
+.strip-cta {
+  padding: 0 20px;
+}
 
   .info-section {
     flex-direction: column;
     margin-top: 0;
     padding: 0 15px;
   }
+
+  .data-warning {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    margin: 20px auto 0 auto;
+  }
 }
 
-/* Celulares pequeños (iPhone, Samsung Galaxy pequeños) */
+/* Celulares estándar y pequeños (iPhone, Samsung Galaxy, etc.) */
 @media (max-width: 480px) {
   body {
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll lateral indeseado */
   }
 
+  /* Ajuste para que los gráficos/tablas no sobrepasen la pantalla */
   canvas, img, svg {
     max-width: 100% !important;
     height: auto !important;
   }
 
+  /* Si tienes botones lado a lado en el Hero, poner uno sobre otro */
   .hero-left .btn,
   .hero-buttons {
     display: flex;
@@ -974,7 +824,8 @@ body.legal-page {
     width: 100%;
     text-align: center;
   }
-} 
+}
+
 /* =========================
 
    PAGINAS LEGALES
@@ -986,163 +837,119 @@ body.legal-page {
 .legal-page{
 
 flex: 1;
-
-
-
 padding-top: 80px;
-
-
-
 background: linear-gradient(180deg,
-
 #f0f6ff 0%,
-
 #e6efff 50%,
-
 #f0f6ff 100%
-
 );
 
 }
 
-
-
 .legal-container{
-
-
-
 max-width:800px;
-
 margin: 0 auto 90px auto;
-
 padding: 50px;
-
-
-
 background:white;
-
 border-radius: 14px;
-
 box-shadow:0 20px 50px rgba(0,0,0,0.10);
-
-
-
 line-height:1.8;
-
 font-size:16px;
-
 color:#374151;
-
-
-
 flex: 1;
-
 }
-
-
 
 .legal-container h1{
-
-
-
 font-size:36px;
-
-
-
 margin-bottom:10px;
-
-
-
 color:#111827;
-
-
-
 }
-
-
 
 .legal-update{
-
-
-
 color:#6b7280;
-
-
-
 margin-bottom:30px;
-
-
-
 font-size:14px;
-
-
-
 }
-
-
 
 .legal-container h2{
-
-
-
 margin-top:35px;
-
-
-
 margin-bottom:10px;
-
-
-
 font-size:20px;
-
-
-
 color:#1e3a8a;
-
-
-
 }
-
-
 
 .legal-container p{
-
-
-
 margin-bottom:16px;
-
-
-
 }
-
-
 
 .legal-container ul{
-
-
-
 margin-left:20px;
-
-
-
 margin-bottom:20px;
-
-
-
 }
 
-
-
 .legal-container li{
-
-
-
 margin-bottom:8px;
-
-
-
 } 
 
 .final-strip a {
   color: #ffffff !important;
+}
+
+/* Ajuste de la tarjeta informativa en celulares */
+@media (max-width: 768px) {
+  .info-card {
+    flex: 0 1 auto;
+    position: relative;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    min-height: auto;
+    margin: 20px auto;
+  }
+}
+
+/* Distribución horizontal de GES y advertencia */
+@media (min-width: 769px) {
+    .info-section .info-card {
+        top: 0;
+        transform: none;
+        flex: none;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        min-height: auto;
+        margin: 0;
+    }
+
+    .info-section .data-warning {
+        transform: none;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+
+/* Distribución vertical para celulares */
+@media (max-width: 768px) {
+    .left-column {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .info-section .info-card,
+    .info-section .data-warning {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+}
+
+/* Separación lateral de las tarjetas en celulares */
+@media (max-width: 768px) {
+  .info-section {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
