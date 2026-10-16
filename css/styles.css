@@ -862,7 +862,7 @@ body.legal-page {
 
 
 /* =====================================================
-   12. RESPONSIVE OPTIMIZADO
+   12. RESPONSIVE OPTIMIZADO PARA MÓVILES
 ===================================================== */
 
 /* Tablets y pantallas medianas */
@@ -887,7 +887,7 @@ body.legal-page {
   }
 }
 
-/* Celulares grandes / Phablets */
+/* Celulares grandes y medianos (Smartphones) */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -909,12 +909,22 @@ body.legal-page {
     margin-bottom: 15px;
   }
 
-  .info-card,
-  .data-warning,
-  .dashboard {
-    width: 100%; /* Cambiado de 90% a 100% para aprovechar el ancho con padding */
-    box-sizing: border-box;
-    margin: 20px auto 0 auto;
+  /* Anulación de posicionamientos manuales/flotantes para el Dashboard e Info Cards */
+  .dashboard, 
+  .dashboard-container,
+  #dashboard,
+  .info-card, 
+  .data-warning {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    margin: 20px auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .stats-grid,
@@ -923,7 +933,6 @@ body.legal-page {
     width: 100%;
   }
 
-  /* FIX PRINCIPAL: Pasar las mini cards a columna para que no se aprieten */
   .mini-cards-column {
     flex-direction: column !important;
     width: 100%;
@@ -940,29 +949,19 @@ body.legal-page {
     margin-top: 0;
     padding: 0 15px;
   }
-
-  .data-warning {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    margin: 20px auto 0 auto;
-  }
 }
 
-/* Celulares estándar y pequeños (iPhone, Samsung Galaxy, etc.) */
+/* Celulares pequeños (iPhone, Samsung Galaxy pequeños) */
 @media (max-width: 480px) {
   body {
-    overflow-x: hidden; /* Evita scroll lateral indeseado */
+    overflow-x: hidden;
   }
 
-  /* Ajuste para que los gráficos/tablas no sobrepasen la pantalla */
   canvas, img, svg {
     max-width: 100% !important;
     height: auto !important;
   }
 
-  /* Si tienes botones lado a lado en el Hero, poner uno sobre otro */
   .hero-left .btn,
   .hero-buttons {
     display: flex;
@@ -975,7 +974,7 @@ body.legal-page {
     width: 100%;
     text-align: center;
   }
-}
+} 
 /* =========================
 
    PAGINAS LEGALES
