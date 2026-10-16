@@ -862,11 +862,11 @@ body.legal-page {
 
 
 /* =====================================================
-   12. RESPONSIVE
+   12. RESPONSIVE OPTIMIZADO
 ===================================================== */
 
-@media(max-width: 1024px) {
-
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
   .hero {
     flex-direction: column;
     align-items: flex-start;
@@ -887,64 +887,95 @@ body.legal-page {
   }
 }
 
-@media(max-width: 768px) {
-
+/* Celulares grandes / Phablets */
+@media (max-width: 768px) {
   .hero {
     flex-direction: column;
     align-items: center;
     text-align: center;
     min-height: auto;
-    padding: 100px 20px 60px 20px;
+    padding: 80px 20px 40px 20px;
   }
 
   .hero-right {
     width: 100%;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 30px;
   }
 
   .card {
     width: 100%;
+    margin-bottom: 15px;
   }
 
   .info-card,
   .data-warning,
   .dashboard {
-    width: 90%;
-    margin: 30px auto 0 auto;
+    width: 100%; /* Cambiado de 90% a 100% para aprovechar el ancho con padding */
+    box-sizing: border-box;
+    margin: 20px auto 0 auto;
   }
 
   .stats-grid,
   .chart-plus-card {
     flex-direction: column;
-  }
-
-  .mini-cards-column {
-    flex-direction: row;
     width: 100%;
   }
 
+  /* FIX PRINCIPAL: Pasar las mini cards a columna para que no se aprieten */
+  .mini-cards-column {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 15px;
+  }
+
   .conversion-strip {
-    padding: 70px 20px;
+    padding: 50px 20px;
+    text-align: center;
   }
 
   .info-section {
     flex-direction: column;
     margin-top: 0;
-    padding: 0;
+    padding: 0 15px;
   }
 
   .data-warning {
     position: relative;
     top: auto;
     left: auto;
-    width: 90%;
-    margin: 30px auto 0 auto;
+    width: 100%;
+    margin: 20px auto 0 auto;
   }
 }
 
+/* Celulares estándar y pequeños (iPhone, Samsung Galaxy, etc.) */
+@media (max-width: 480px) {
+  body {
+    overflow-x: hidden; /* Evita scroll lateral indeseado */
+  }
 
+  /* Ajuste para que los gráficos/tablas no sobrepasen la pantalla */
+  canvas, img, svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Si tienes botones lado a lado en el Hero, poner uno sobre otro */
+  .hero-left .btn,
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-left .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
 /* =========================
 
    PAGINAS LEGALES
